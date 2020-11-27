@@ -1,0 +1,15 @@
+{
+    "development": {
+        "PORT": 3000,
+        "user": "hr",
+        "password": "hr",
+        "connectString": "localhost/XEPDB1" 
+    },
+
+    "production":{
+        "PORT": "KAVO",
+        "user": "hr",
+        "password": "hr",
+        "connectString": "localhost/XEPDB1"
+    }
+}

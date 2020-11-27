@@ -1,0 +1,9 @@
+https://github.com/uchidalab/book-dataset
+
+https://www.amazon.com/
+
+https://selenium-python.readthedocs.io/installation.html
+
+https://pandas.pydata.org/getting_started.html
+
+https://www.crummy.com/software/BeautifulSoup/#Download

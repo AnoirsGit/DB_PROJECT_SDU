@@ -1,16 +1,16 @@
-const oracledb = require('oracledb');
+require('./config/config')
 const express = require('express');
+const db = require('./models/db');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
 const app = express();
-oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
-connection = await oracledb.getConnection({
-    user: "hr",
-    password: "hr",
-    // connectString: "localhost:5500" 
-    connectString: "localhost/XEPDB1" 
-    // connectString: "LISTENER_XE"
-});
-app.listen(3000, () =>{
-    console.log( "server listening: 3000")
+
+app.use(bodyParser.json());
+app.use(cors());
+
+app.listen(process.env.PORT, () =>{
+    console.log( "server listening:" + process.env.PORT)
 })
 
 app.get('/login', (req, res) =>{
@@ -25,21 +25,5 @@ app.post('/aouth', (req, res) =>{
 
 })
 
-async function run () {
-    let connection;
 
-    try{
-        
-        const res =await connection.execute(
-           "SELECT * FROM EMPLOYEES",
-        );
-        return res;
-        console.log(res)
-        console.log("kavo");
-    }
-    catch(error){
-        console.log(error);
-    }
-    
-}
 // run()

@@ -11,3 +11,5 @@ https://www.crummy.com/software/BeautifulSoup/#Download
 https://pypi.org/project/xlrd/
 
 https://openpyxl.readthedocs.io/en/stable/
+
+https://oracle.github.io/python-cx_Oracle/

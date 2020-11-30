@@ -74,8 +74,14 @@ ALTER TABLE Userss
 ADD (
 	pass_salt VARCHAR2(2000)
 );
+/
 /*
 problem here is that data is not full. There is no price and much more useful things.
 But here we have an amazon id of the boooks.
 It should help us to scrap everything with python.
 */
+ALTER TABLE Book
+ADD (
+	written_date DATE NOT NULL
+);
+/

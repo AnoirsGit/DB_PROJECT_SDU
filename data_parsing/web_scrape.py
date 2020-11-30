@@ -138,10 +138,11 @@ def getPriceAndDate(a_id):
 #new dataframe for better data.
 new_df = pd.DataFrame(columns=['id','url', 'title', 'author', 'genre_id', 'genre_name', 'price', 'date'])
 
-for i in range(500, 1000):
+for i in range(6300, 6600):
     print(i+1)
     book_df.at[i, 'price'], book_df.at[i, 'date'] = getPriceAndDate(book_df.values[i, 0])
     new_df = new_df.append(book_df.loc[i], ignore_index=True)
 append_df_to_excel(r'D:\Users\Almas\Documents\GitHub\DB_PROJECT_SDU\data_parsing\book-listing(cleaned).xlsx', new_df)
+
 
 print(new_df)

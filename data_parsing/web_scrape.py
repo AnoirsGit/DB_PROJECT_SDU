@@ -39,8 +39,6 @@ def append_df_to_excel(filename, df, sheet_name='Sheet1', startrow=None,
                         [can be dictionary]
 
     Returns: None
-
-    (c) [MaxU](https://stackoverflow.com/users/5741205/maxu?tab=profile)
     """
     from openpyxl import load_workbook
 

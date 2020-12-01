@@ -1,32 +1,29 @@
-CREATE OR REPLACE PACKAGE books_pck AS
-	PROCEDURE book_insert(
+create or replace PACKAGE books_pck AS
+    PROCEDURE book_insert(
         p_amazond_index IN book.amazon_index%TYPE,
-        p_image IN book.image%TYPE,
         p_image_url IN book.image_url%TYPE,
         p_title IN book.title%TYPE,
         p_author IN book.author%TYPE,
         p_price IN book.price%TYPE,
-        p_date IN book.written_date%TYPE,
         p_category_id IN book.category_id%TYPE,
+        p_date IN VARCHAR2,
         p_category_name IN categories.category_name%TYPE
-		);     
+        );     
     TYPE cats_list IS TABLE OF VARCHAR2(100) INDEX BY BINARY_INTEGER;
 END books_pck;
 /
-
-CREATE OR REPLACE PACKAGE BODY books_pck AS
-	PROCEDURE book_insert(
+create or replace PACKAGE BODY books_pck AS
+    PROCEDURE book_insert(
         p_amazond_index IN book.amazon_index%TYPE,
-        p_image IN book.image%TYPE,
         p_image_url IN book.image_url%TYPE,
         p_title IN book.title%TYPE,
         p_author IN book.author%TYPE,
         p_price IN book.price%TYPE,
-        p_date IN book.written_date%TYPE,
-        p_category_id IN book.category_id%TYPE,
+        p_category_id IN book.category_id%TYPE,        
+        p_date IN VARCHAR2,
         p_category_name IN categories.category_name%TYPE
-	)
-	AS
+    )
+    AS
         c_list books_pck.cats_list;
         cnt NUMBER;
         i NUMBER := 0;
@@ -53,28 +50,26 @@ CREATE OR REPLACE PACKAGE BODY books_pck AS
                 p_category_name
             );
         END IF;
-        
-		INSERT INTO book(
+
+        INSERT INTO book(
             amazon_index,
-            image,
             image_url,
             title,
             author,
             price,
             category_id,
             written_date
-		)
-		VALUES(
+        )
+        VALUES(
             p_amazond_index,
-            p_image,
             p_image_url,
             p_title,
             p_author,
             p_price,
             p_category_id,
-            p_date
-		);
-		COMMIT;
-	END book_insert;
+            to_date(p_date, 'MM/DD/YYYY')
+        );
+        COMMIT;
+    END book_insert;
 END books_pck;
 /

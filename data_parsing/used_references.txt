@@ -12,4 +12,8 @@ https://pypi.org/project/xlrd/
 
 https://openpyxl.readthedocs.io/en/stable/
 
+https://pypi.python.org/pypi/Pillow/
+
 https://oracle.github.io/python-cx_Oracle/
+
+https://www.youtube.com/watch?v=C9op6I-4WM0&ab_channel=MachineLearningwithOracle

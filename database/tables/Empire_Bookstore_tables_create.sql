@@ -20,7 +20,7 @@ END;
 /
 
 CREATE TABLE Book (
-	amazon_index NUMBER NOT NULL,
+	amazon_index VARCHAR2(100) NOT NULL,
 	image BLOB NOT NULL,
 	image_url VARCHAR2(100) NOT NULL,
 	title VARCHAR2(100) NOT NULL,
@@ -53,7 +53,7 @@ END;
 --This table is connecting table for the every user and its books in its basket.
 CREATE TABLE Basket (
 	user_id NUMBER NOT NULL,
-	amazon_index NUMBER NOT NULL);
+	amazon_index VARCHAR2(100) NOT NULL);
 /
 
 --foregin key for Book table.
@@ -83,5 +83,24 @@ It should help us to scrap everything with python.
 ALTER TABLE Book
 ADD (
 	written_date DATE NOT NULL
+);
+/
+
+ALTER TABLE
+   Book
+MODIFY
+(
+   price FLOAT(2)
+);
+/
+
+ALTER TABLE Book DROP COLUMN image;
+/
+
+ALTER TABLE
+   Book
+MODIFY
+(
+   price VARCHAR2(100)
 );
 /

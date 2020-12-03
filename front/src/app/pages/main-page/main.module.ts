@@ -10,6 +10,6 @@ import { MainRoutingModule } from './main-routing.module';
 @NgModule({
   imports: [ MainRoutingModule,CommonModule,  NgAntModule,FormsModule,ReactiveFormsModule],
   declarations: [MainPageComponent],
-  exports: [MainPageComponent]
+  exports: []
 })
 export class MainPageModule { }

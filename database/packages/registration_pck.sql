@@ -8,7 +8,7 @@ CREATE OR REPLACE package registration_pck AS
 END registration_pck;
 /
 
-CREATE OR REPLACE PACKAGE BODY registration_pck AS
+create or replace PACKAGE BODY registration_pck AS
 	PROCEDURE new_user(
 		p_nickname IN Userss.nickname%TYPE,
 		p_pass IN Userss.pass%TYPE,
@@ -18,14 +18,12 @@ CREATE OR REPLACE PACKAGE BODY registration_pck AS
 	IS
 	BEGIN
 		INSERT INTO Userss(
-			user_id,
 			nickname,
 			pass,
 			phone_number,
 			pass_salt
 		)
 		VALUES(
-			0,
 			p_nickname,
 			p_pass,
 			p_phone_number,

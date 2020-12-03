@@ -136,7 +136,7 @@ def getPriceAndDate(a_id):
 #new dataframe for better data.
 new_df = pd.DataFrame(columns=['id','url', 'title', 'author', 'genre_id', 'genre_name', 'price', 'date'])
 
-for i in range(6300, 6600):
+for i in range(7000, 8000):
     print(i+1)
     book_df.at[i, 'price'], book_df.at[i, 'date'] = getPriceAndDate(book_df.values[i, 0])
     new_df = new_df.append(book_df.loc[i], ignore_index=True)

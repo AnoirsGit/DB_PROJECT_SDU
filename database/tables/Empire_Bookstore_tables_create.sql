@@ -1,7 +1,7 @@
 CREATE TABLE Userss (
 	user_id NUMBER NOT NULL,
-	nickname VARCHAR2(100) UNIQUE NOT NULL,
-	pass VARCHAR2(100) NOT NULL, --maybe wil store in hash for better security.
+	nickname VARCHAR2(300) UNIQUE NOT NULL,
+	pass VARCHAR2(300) NOT NULL, --maybe wil store in hash for better security.
 	phone_number NUMBER NOT NULL,
 	CONSTRAINT userss_pk PRIMARY KEY (user_id)
 );
@@ -20,11 +20,11 @@ END;
 /
 
 CREATE TABLE Book (
-	amazon_index VARCHAR2(100) NOT NULL,
+	amazon_index VARCHAR2(300) NOT NULL,
 	image BLOB NOT NULL,
-	image_url VARCHAR2(100) NOT NULL,
-	title VARCHAR2(100) NOT NULL,
-	author VARCHAR2(100) NOT NULL,
+	image_url VARCHAR2(300) NOT NULL,
+	title VARCHAR2(300) NOT NULL,
+	author VARCHAR2(300) NOT NULL,
 	price NUMBER(5,2) DEFAULT 0,
 	category_id NUMBER NOT NULL,
 	CONSTRAINT BOOK_PK PRIMARY KEY (amazon_index)
@@ -33,7 +33,7 @@ CREATE TABLE Book (
 
 CREATE TABLE Categories (
 	category_id NUMBER NOT NULL,
-	category_name VARCHAR2(100) UNIQUE NOT NULL,
+	category_name VARCHAR2(300) UNIQUE NOT NULL,
 	CONSTRAINT CATEGORIES_PK PRIMARY KEY (category_id)
 );
 
@@ -53,7 +53,7 @@ END;
 --This table is connecting table for the every user and its books in its basket.
 CREATE TABLE Basket (
 	user_id NUMBER NOT NULL,
-	amazon_index VARCHAR2(100) NOT NULL);
+	amazon_index VARCHAR2(300) NOT NULL);
 /
 
 --foregin key for Book table.
@@ -101,6 +101,6 @@ ALTER TABLE
    Book
 MODIFY
 (
-   price VARCHAR2(100)
+   price VARCHAR2(300)
 );
 /

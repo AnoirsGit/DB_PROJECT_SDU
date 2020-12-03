@@ -1,15 +1,17 @@
 {
     "development": {
         "PORT": 3000,
-        "user": "hr",
-        "password": "hr",
-        "CONNECT_STRING": "localhost/XEPDB1" 
+        "user": "BOSS",
+        "password": "bosspassesbook",
+        "CONNECT_STRING": "localhost/XEPDB1"
+
     },
 
-    "production":{
+    "production": {
         "PORT": "KAVO",
-        "user": "hr",
-        "password": "hr",
+        "user": "BOSS",
+        "password": "bosspassesbook",
         "CONNECT_STRING": "localhost/XEPDB1"
+
     }
 }

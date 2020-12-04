@@ -1,10 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-p{
+
+p {
     color: #262626;
     font-weight: bold;
 }
-h4{
+
+h4 {
     color: #262626;
     font-weight: bold;
     margin-bottom: 0;
+}
+
+body {
+    background-color: rgb(251, 248, 255);
 }

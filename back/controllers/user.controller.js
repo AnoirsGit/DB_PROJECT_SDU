@@ -8,6 +8,7 @@ connectObj = { user: process.env.user, password: process.env.password, connectSt
 
 
 module.exports.register = async(req, res, next) => {
+
     var connection = await oracledb.getConnection(connectObj);
     let password = req.body.password;
     bcrypt.genSalt(10, (err, salt) => {
@@ -15,13 +16,12 @@ module.exports.register = async(req, res, next) => {
             Hash = hash;
 
             connection.execute(
-                `INSERT INTO Userss
-                        (user_id, nickname, pass, phone_number, pass_salt)
-                        VALUES
-                        (0, :name, :pass, :num, :salt)
-                        `, { name: req.body.name, pass: hash, num: req.body.phone, salt: salt }, { autoCommit: true }, (err, result) => {
+                `
+                BEGIN
+		            registration_pck.new_user(:name, :pass,:num, :salt);
+                END;
+                `, { name: req.body.name, pass: hash, num: req.body.phone, salt: salt }, { autoCommit: true }, (err, result) => {
                     if (err) {
-
                         console.log(err)
                         res.status(400).json(err);
                     }
@@ -40,8 +40,8 @@ module.exports.authenticate = async(req, res, next) => {
     console.log('sdfsd')
     connection.execute(
         `SELECT *  FROM Userss
-                    WHERE nickname = : nickname
-                    `, { nickname: req.body.name }, (err, result) => {
+        WHERE nickname = : nickname
+        `, { nickname: req.body.name }, (err, result) => {
             if (err) {
                 return res.status(500).json(err);
             } else if (result.rows.length < 1) {

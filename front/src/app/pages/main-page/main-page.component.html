@@ -1,64 +1,119 @@
-<div nz-row>
-    <ul nz-menu nzMode="horizontal" class="nav" style="width: 100%; margin-bottom: 30px; background-color:
+<div>
+    <nz-affix [nzOffsetTop]="0">
+        <ul nz-menu nzMode="horizontal" class="nav" style="width: 100%; margin-bottom: 30px; background-color:
     #d580ff;">
-        <div nz-row nzJustify="space-between">
-            <div nz-col style="display: flex;">
-                <li nz-menu-item nzSelected>
-                    <i nz-icon nzType="mail"></i> Navigation One
-                </li>
-                <li nz-menu-item>
-                    <i nz-icon nzType="appstore"></i> Navigation Two
-                </li>
-            </div>
-            <div nz-col style="display: flex; margin-right: 30px;">
-                <li>
-                    <a href="https://ng.ant.design" target="_blank" rel="noopener noreferrer">Navigation Four - Link</a>
-                </li>
-            </div>
-        </div>
-        <!-- <li nz-submenu nzTitle="Navigation Three - Submenu" nzIcon="setting">
-          <ul>
-            <li nz-menu-group nzTitle="Item 1">
-              <ul>
-                <li nz-menu-item>Option 1</li>
-                <li nz-menu-item>Option 2</li>
-              </ul>
-            </li>
-            <li nz-menu-group nzTitle="Item 2">
-              <ul>
-                <li nz-menu-item>Option 3</li>
-                <li nz-menu-item>Option 4</li>
-                <li nz-submenu nzTitle="Sub Menu">
-                  <ul>
-                    <li nz-menu-item nzDisabled>Option 5</li>
-                    <li nz-menu-item>Option 6</li>
-                  </ul>
-                </li>
-                <li nz-submenu nzDisabled nzTitle="Disabled Sub Menu">
-                  <ul>
-                    <li nz-menu-item>Option 5</li>
-                    <li nz-menu-item>Option 6</li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li> -->
-
-    </ul>
-
-
-
-    <div nz-col style="padding: 0 80px; ">
-        <div nz-row nzJustify="start ">
-            <div class="card " style="display: flex; ">
-                <img src="img_avatar.png " alt="Avatar " style="width:100% ">
-                <div class="container ">
-                    <h4><b>John Doe</b></h4>
-                    <p>Architect & Engineer</p>
+            <div nz-row nzJustify="space-between">
+                <div nz-col style="display: flex;">
+                    <li nz-menu-item nzSelected (click)="change_tag(0)" style="margin-left: 50px;">
+                        <i nz-icon nzType="book" nzTheme="outline"></i> Book-list
+                    </li>
+                    <li nz-menu-item (click)="change_tag(1)">
+                        <i nz-icon nzType="shopping" nzTheme="outline"></i> Basket
+                    </li>
+                </div>
+                <div nz-col style="display: flex; margin-right: 10px;">
+                    <li nz-menu-item (click)="onLogOut()" style="margin-right: 50px;">
+                        <i nz-icon nzType="logout" nzTheme="outline"></i> Logout
+                    </li>
                 </div>
             </div>
+        </ul>
+    </nz-affix>
+
+    <div nz-row *ngIf="page_tag === 'list'">
+        <div nz-col nzSpan="12">
+            <div style="margin-left: 100px;" class="book-list-item" *ngFor="let book of groupPages[page - 1] ">
+                <div nz-row nzJustify="space-between" (click)="selected = book">
+                    <div nz-col>
+                        <h4 style="margin: 0;">
+                            {{book['TITLE'].length > 40 ?book['TITLE'].substring(0, 40) + '...':book['TITLE']}}
+                        </h4>
+                        <h5 style="margin: 0;">Author: {{book['AUTHOR']}}</h5>
+                        <div class="disp-flex" nz-row>category: {{book['CATEGORY_NAME']}}</div>
+                    </div>
+                    <div class="" nz-col nzSpan="6">
+                        <div class="disp-flex" nz-row style="margin-bottom: 15px;">
+                            <h4>{{book['PRICE']}} usd</h4>
+                        </div>
+
+                        <div class="disp-flex" nz-row>
+                            <a (click)="insToBasket(book)">
+                                <i nz-icon nzType="shopping" nzTheme="outline" style="color: #9966ff; font-size: 22.5px;">
+                              </i>To Basket
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <nz-pagination [nzPageIndex]="page" [nzTotal]="942" (nzPageIndexChange)="changePage($event)" [nzPageSize]="20" style="margin: 30px 0"></nz-pagination> -->
+            <nz-pagination style="margin:20px 100px " [(nzPageIndex)]="page" [nzPageSize]="20" [nzTotal]="pageLen"></nz-pagination>
+
+        </div>
+
+        <div nz-col nzSpan="12">
+            <nz-affix [nzOffsetTop]="82" style="margin-right: 100px; margin-left: 16px;">
+                <div *ngIf="!selected" class="affix-card">
+                    <div nz-row nzJustify="space-between" style="margin-bottom: 20px;">
+                        <div nz-col style="display: flex;">
+                            <img src="https://maxcdn.icons8.com/Share/icon/nolan/science/open_book1600.png" style="width: 80px; height: 80px;" alt="">
+                            <div style="padding-top:10px ; ">
+                                <h2 style="color: #9966ff;margin-bottom: 0;">EMPIRE</h2>
+                                <h2>BOOKSTORE</h2>
+                            </div>
+                        </div>
+                        <div nz-col>
+                            <p style=" font-weight: 500;">Made by:</p>
+                            <p style="margin-left: 75px; font-weight: 500;">Anuar Beibit</p>
+                            <p style="margin-left: 75px; font-weight: 500;">Almas Kazhytay</p>
+                            <p style="margin-left: 75px; font-weight: 500;">Murat Kaparov</p>
+                        </div>
+                    </div>
+                    <div class="" nz-row>
+                        <h3 style="font-style: italic; font-weight: 400; ">
+                            Website where anyone can find a book, buy it, or take it for free, store its own books.
+                        </h3>
+                        <h3>● Introduction</h3>
+                        <h4 style="font-style: italic; font-weight: 400; ">
+                            In our daily routine, we forgot what a simple reading of various fiction is, of course it is easier to go to social networks and watch someone's stories and be aware of everything new, but it is not necessary to forget that all good new things are long
+                            forgotten old, and in books we can also learn a lot of new things. As Alexander Herzen said, "Without reading, there is no real education, no taste, no word, no multi-sided breadth of understanding, Goethe and Shakespeare are
+                            equal to the whole University. A person experiences centuries by reading". To begin with, we have created a store where the user can get acquainted with a large number of books of different genres. For those who can't buy books,
+                            we also have a lot of free and interesting books.
+
+                        </h4>
+                    </div>
+                </div>
+
+                <div *ngIf="selected" class="affix-card">
+                    <div class="" nz-row style="margin-bottom: 24px;">
+                        <div class="" nz-col nzSpan="12">
+                            <h4 style="margin-bottom: 15px;">{{selected['TITLE']}}</h4>
+                            <img [src]="selected.IMAGE_URL" *ngIf="selected.IMAGE_URL" alt="" style="width: 250px;">
+                        </div>
+                        <div class="" nz-col nzSpan='12'>
+                            <div class="" nz-row nzJustify="end">
+                                <i nz-icon nzType="arrow-left" nzTheme="outline" style="color: #9966ff; font-size: 22.5px;" (click)="selected = null"></i>
+                            </div>
+                            <div class="" nz-row>
+                                <nz-descriptions nzTitle="Book info" nzBordered nzLayout="vertical">
+                                    <nz-descriptions-item nzTitle="Price:">{{selected['PRICE']}}</nz-descriptions-item>
+                                    <nz-descriptions-item nzTitle="Author:">{{selected['AUTHOR']}}</nz-descriptions-item>
+                                    <nz-descriptions-item nzTitle="Category:">{{selected['CATEGORY_NAME']}}</nz-descriptions-item>
+                                    <nz-descriptions-item nzTitle="Date:">{{selected['WRITTEN_DATE'].substring(0, 10)}}</nz-descriptions-item>
+                                </nz-descriptions>
+                            </div>
+                        </div>
+                    </div>
+                    <div nz-row>
+                        <div class="disp-flex" nz-row><a><i nz-icon nzType="shopping" nzTheme="outline" style="color: #9966ff; font-size: 22.5px;"></i>To Basket</a></div>
+                    </div>
+                </div>
+            </nz-affix>
         </div>
     </div>
-    <div nz-col></div>
+
+    <div *ngIf="page_tag !== 'list'" nz-row>
+        <div nz-col nzSpan="24">
+            <app-basket></app-basket>
+        </div>
+    </div>
 </div>

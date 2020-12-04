@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';  
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,9 +12,19 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { NgAntModule } from './ng-antd.module';
+import { IconDefinition } from '@ant-design/icons-angular';
+import { NzIconModule, NZ_ICONS } from 'ng-zorro-antd/icon';
+import * as AllIcons from '@ant-design/icons-angular/icons';
 
 registerLocaleData(en);
+const antDesignIcons = AllIcons as {
+  [key: string]: IconDefinition;
+};
 
+const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => {
+  const i = antDesignIcons[key];
+  return i;
+});
 @NgModule({
   declarations: [
     AppComponent
@@ -28,9 +38,13 @@ registerLocaleData(en);
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, useValue: en_US },{
+    provide: NZ_ICONS,
+    useValue: icons
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

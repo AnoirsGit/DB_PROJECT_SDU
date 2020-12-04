@@ -6,6 +6,9 @@ const ctrlMain = require('../controllers/main.controller');
 
 router.post('/register', ctrlUser.register);
 router.post('/auth', ctrlUser.authenticate);
-
-// router.get('', )
+router.post('/basket', ctrlMain.getBasket);
+router.get('/books', ctrlMain.getBooks);
+router.post('/book', ctrlMain.getBook);
+router.post('/basket/insert', ctrlMain.insBasket);
+router.post('/basket/delete', ctrlMain.delBasket);
 module.exports = router;

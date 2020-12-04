@@ -41,3 +41,52 @@
 .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open {
     color: #660066;
 }
+
+.icon {
+    font-size: 17.5px;
+    margin: 0 5px;
+}
+
+.book-list-item {
+    height: 84px;
+    background-color: white;
+    margin-right: 16px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    /* border: 1px solid #a6a6a6; */
+    /* border-radius: 12px; */
+    padding: 8px 16px;
+}
+
+.book-list-item {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.affix-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    padding: 24px;
+    margin-right: 84px;
+    margin-left: 16px;
+    width: 100%;
+    height: 600px;
+    background-color: white;
+}
+
+.affix-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+p {
+    margin-bottom: 0;
+}
+
+.disp-flex {
+    display: flex;
+}
+
+a {
+    color: #9966ff;
+}

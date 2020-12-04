@@ -73,9 +73,9 @@ export class LoginComponent implements OnInit {
       .subscribe(arg => {
         this.message.info('You are registered succesfully');
         const dataToSave = {
-          user: arg.NICKNAME,
-          phone: arg.PHONE_NUMBER,
-          id: arg.USER_ID
+          user: arg['user'].NICKNAME,
+          phone: arg['user'].PHONE_NUMBER,
+          id: arg['user'].USER_ID
         }
         console.log(arg)
         localStorage.setItem("user", JSON.stringify(dataToSave));

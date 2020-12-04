@@ -55,3 +55,5 @@ CREATE OR REPLACE PACKAGE BODY login_pck AS
     END get_user;
 END login_pck;
 /
+
+-- 1 function, 1 record, 1 procedure, 1 exception.

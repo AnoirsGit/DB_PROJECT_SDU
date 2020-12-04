@@ -39,3 +39,5 @@ create or replace PACKAGE BODY registration_pck AS
 */
 END registration_pck;
 /
+
+-- 2 procedures, 1 transaction.

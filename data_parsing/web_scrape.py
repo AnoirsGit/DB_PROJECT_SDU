@@ -14,8 +14,6 @@ book_df = pd.read_excel (r'D:\Users\Almas\Documents\GitHub\DB_PROJECT_SDU\data_p
 book_df["price"] = ""
 book_df["date"] = ""
 
-
-
 def append_df_to_excel(filename, df, sheet_name='Sheet1', startrow=None,
                        truncate_sheet=False, 
                        **to_excel_kwargs):

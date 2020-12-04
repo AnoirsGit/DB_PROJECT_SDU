@@ -90,10 +90,10 @@ else:
             books_pck.category_insert('Biographies and Memoirs');
         END;
         """
-        # for i in range(0, len(new_df)):
-        #     cur.execute(sql_genres_insert,
-        #                 v_category_name = str(new_df.values[i, 0])
-        #             )
+        for i in range(0, len(new_df)):
+            cur.execute(sql_genres_insert,
+                        v_category_name = str(new_df.values[i, 0])
+                    )
 
         for i in range(0, len(book_df)):
             # print(book_df.values[i, 1],book_df.values[i, 2],book_df.values[i, 3],book_df.values[i, 4],book_df.values[i, 5],book_df.values[i, 6],book_df.values[i, 7],book_df.values[i, 8])

@@ -18,3 +18,5 @@ CREATE OR REPLACE PACKAGE BODY removing_pck AS
 	END delete_user;
 END removing_pck;
 /
+
+--1 procedure

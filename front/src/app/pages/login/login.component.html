@@ -1,11 +1,11 @@
-<div nz-row class="backg" [ngStyle]="{backgroundImage:'url(../../../assets/Untitled.png)'}">
-    <div nz-col nzSpan="20">
-        <div nz-row nzJustify="center" style="margin-top: 150px;">
+<div nz-row class="backg" [ngStyle]="{backgroundImage:'url(../../../assets/main.png)'}">
+    <div nz-col nzSpan="16">
+        <div nz-row nzJustify="center" style="margin-top: 300px;">
             <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
                 <div style="display: flex;">
-                    <img src="https://maxcdn.icons8.com/Share/icon/nolan/science/open_book1600.png" style="width: 60px; height: 60px;" alt="">
+                    <img src="../../../assets/download" style="width: 100px; height: 100px;" alt="">
                     <div style="padding-top:10px ;">
-                        <h4 style="color: #9966ff;">EMPIRE</h4>
+                        <h4 style="color: #00b3b3;">SNORLAX</h4>
                         <h4>BOOKSTORE</h4>
                     </div>
                 </div>
@@ -37,10 +37,12 @@
                 </nz-form-item>
                 <div nz-row class="login-form-margin">
                     <div nz-col style="margin-bottom: 10px;">
-                        <a class="login-form-forgot">Forgot password</a>
+                        <a class="login-form-forgot" style="color: #00b3b3;">Forgot password</a>
                     </div>
                 </div>
-                <button nz-button class="login-form-button login-form-margin" (click)="selectedMode !== 'login'? onRegister() : onLogin()" [nzType]="'primary'">{{selectedMode == "login"? "Login" : "Register"}}</button> Or <a (click)="changeMode()"> {{ selectedMode == "login"? "Register now!" :  "Login" }} </a>
+                <button nz-button class="login-form-button login-form-margin" style="background-color: #00b3b3;"  (click)="selectedMode !== 'login'? onRegister() : onLogin()" [nzType]="'primary'">{{selectedMode == "login"? "Login" : "Register"}}</button>
+                 Or
+                <a (click)="changeMode()"  style="color: #00b3b3;"> {{ selectedMode == "login"? "Register now!" :  "Login" }} </a>
             </form>
         </div>
     </div>

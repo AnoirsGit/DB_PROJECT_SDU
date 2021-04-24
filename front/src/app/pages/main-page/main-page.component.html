@@ -1,17 +1,17 @@
 <div>
     <nz-affix [nzOffsetTop]="0">
         <ul nz-menu nzMode="horizontal" class="nav" style="width: 100%; margin-bottom: 30px; background-color:
-    #d580ff;">
+    #00b3b3;">
             <div nz-row nzJustify="space-between">
                 <div nz-col style="display: flex;">
-                    <li nz-menu-item nzSelected (click)="change_tag(0)" style="margin-left: 50px;">
+                    <li nz-menu-item nzSelected (click)="change_tag(0)" style="margin-left: 50px; font-size: 20px;">
                         <i nz-icon nzType="book" nzTheme="outline"></i> Book-list
                     </li>
-                    <li nz-menu-item (click)="change_tag(1)">
+                    <li nz-menu-item (click)="change_tag(1)" style="font-size: 20px;">
                         <i nz-icon nzType="shopping" nzTheme="outline"></i> Basket
                     </li>
                 </div>
-                <div nz-col style="display: flex; margin-right: 10px;">
+                <div nz-col style="display: flex; margin-right: 10px; font-size: 20px;">
                     <li nz-menu-item (click)="onLogOut()" style="margin-right: 50px;">
                         <i nz-icon nzType="logout" nzTheme="outline"></i> Logout
                     </li>
@@ -21,7 +21,7 @@
     </nz-affix>
 
     <div nz-row *ngIf="page_tag === 'list'">
-        <div nz-col nzSpan="12">
+        <div nz-col nzSpan="16">
             <div style="margin-left: 100px;" class="book-list-item" *ngFor="let book of groupPages[page - 1] ">
                 <div nz-row nzJustify="space-between" (click)="selected = book">
                     <div nz-col>
@@ -38,7 +38,7 @@
 
                         <div class="disp-flex" nz-row>
                             <a (click)="insToBasket(book)">
-                                <i nz-icon nzType="shopping" nzTheme="outline" style="color: #9966ff; font-size: 22.5px;">
+                                <i nz-icon nzType="shopping" nzTheme="outline" style="color: #29a3a3; font-size: 22.5px;">
                               </i>To Basket
                             </a>
                         </div>
@@ -50,17 +50,17 @@
 
         </div>
 
-        <div nz-col nzSpan="12">
+        <div nz-col nzSpan="8" style="font-size: 18px;">
             <nz-affix [nzOffsetTop]="82" style="margin-right: 100px; margin-left: 16px;">
                 <div *ngIf="!selected" class="affix-card">
                     <div nz-row nzJustify="space-between" style="margin-bottom: 20px;">
-                        <div nz-col style="display: flex;">
-                            <img src="https://maxcdn.icons8.com/Share/icon/nolan/science/open_book1600.png" style="width: 80px; height: 80px;" alt="">
-                            <div style="padding-top:10px ; ">
-                                <h2 style="color: #9966ff;margin-bottom: 0;">EMPIRE</h2>
-                                <h2>BOOKSTORE</h2>
-                            </div>
+                      <div style="display: flex;">
+                        <img src="../../../assets/download" style="width: 100px; height: 100px;" alt="">
+                        <div style="padding-top:10px ;">
+                            <h4 style="color: #00b3b3;">SNORLAX</h4>
+                            <h4>BOOKSTORE</h4>
                         </div>
+                    </div>
                         <div nz-col>
                             <p style=" font-weight: 500;">Made by:</p>
                             <p style="margin-left: 75px; font-weight: 500;">Anuar Beibit</p>
